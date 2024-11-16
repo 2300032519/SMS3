@@ -1,0 +1,12 @@
+<!-- contacts/templates/contacts/contact_list.html -->
+{% extends 'Navbar/ProjectNavBar.html' %}
+{% load static %}
+<h1>Contact List</h1>
+<a href="{% url 'add_contact' %}">Add Contact</a>
+<ul>
+    {% for contact in contacts %}
+        <li>{{ contact.name }} - {{ contact.email }} - {{ contact.phone_number }} - {{ contact.address }}
+            <a href="{% url 'delete_contact' contact.pk %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>

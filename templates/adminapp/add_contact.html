@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'NavBar/ProjectNavBar.html' %}
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Contacts</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .left-side, .right-side {
+            width: 48%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .left-side h2, .right-side h2 {
+            text-align: center;
+        }
+        .contact-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-list li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+        }
+        .contact-list button {
+            margin-left: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+{% block body %}
+
+    <div class="container">
+        <!-- Left side: Add Contact Form -->
+        <div class="left-side">
+            <h2>Add Contact</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <label for="recipient_email">Recipient Email (optional for sending):</label>
+                <input type="email" name="recipient_email">
+                <button type="submit" name="save">Save</button>
+                <button type="submit" name="send_email">Save & Send</button>
+            </form>
+        </div>
+
+        <!-- Right side: Contact List -->
+        <div class="right-side">
+            <h2>Contact List</h2>
+            <div class="contact-list">
+                <ul>
+                    {% for contact in contacts %}
+                        <li>
+                            <strong>{{ contact.name }}</strong> - {{ contact.email }} - {{ contact.phone_number }} - {{ contact.address }}
+                            <form action="{% url 'delete_contact' contact.pk %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+</body>
+</html>

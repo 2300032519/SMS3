@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'NavBar/FacultyNavBar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<center><h1>Faculty Home Page</h1></center>
+<center>
+<h2>Lets Have a Glance on Django
+</h2>
+</center>
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="#" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="#" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="#" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endblock %}
+</body>
+</html>
